@@ -25,7 +25,7 @@ def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_
 "SELECT projects.title, SUM(pledges.amount) - projects.funding_goal AS 'Overage' FROM projects
 INNER JOIN pledges ON pledges.project_id = projects.id
 GROUP BY projects.title
-ORDER BY SUM(pledges.amount) - projects.funding_goal DESC LIMIT 2"
+ORDER BY (SUM(pledges.amount) - projects.funding_goal) ASC LIMIT 10 OFFSET 8"
 end
 
 def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_them_by_the_amount_and_users_name
